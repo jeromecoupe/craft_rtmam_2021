@@ -1,0 +1,28 @@
+columnSuffix: zqtwowmn
+contentColumnType: text
+fieldGroup: cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039 # Common
+handle: commonBody
+instructions: 'Write away, Hemingway !'
+name: Body
+searchable: false
+settings:
+  availableTransforms: '*'
+  availableVolumes: ''
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: Full.json
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

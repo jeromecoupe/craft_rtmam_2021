@@ -1,0 +1,19 @@
+columnSuffix: tcjgcnrl
+contentColumnType: string(1200)
+fieldGroup: cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039 # Common
+handle: commonIntro
+instructions: 'Intro. 300 chars max. in one paragraph.'
+name: Intro
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 300
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
