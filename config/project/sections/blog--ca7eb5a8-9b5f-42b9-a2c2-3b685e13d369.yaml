@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: blog
+name: Blog
+propagationMethod: all
+siteSettings:
+  e058a18f-349e-4971-b6cc-200ff4c0545a: # Sandbox Craft
+    enabledByDefault: true
+    hasUrls: true
+    template: blog/_entry
+    uriFormat: 'blog/{slug}'
+type: channel

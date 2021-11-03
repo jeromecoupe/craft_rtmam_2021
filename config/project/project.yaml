@@ -1,0 +1,34 @@
+dateModified: 1635954167
+email:
+  fromEmail: jercoupe@gmail.com
+  fromName: 'Sandbox Craft'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    2be95b78-fbc5-4763-bfd2-4619b0b66d4d: Blog # Blog
+    6fc7ec82-fd53-4cc9-8f78-75012725b329: Intro # Intro
+    15a8a987-5944-4dfe-8868-186a87ae65f7: blogpost # blogpost
+    720555ef-0fdd-4f04-910e-c4dc7dad41e4: 'Sandbox Craft' # Sandbox Craft
+    c6afdd8f-cfd6-4cc0-affb-da54300c39aa: Image # Image
+    ca7eb5a8-9b5f-42b9-a2c2-3b685e13d369: Blog # Blog
+    cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039: Common # Common
+    d7cbf7a0-c2e2-48ea-9eae-91f20c8373dd: Body # Body
+    e058a18f-349e-4971-b6cc-200ff4c0545a: 'Sandbox Craft' # Sandbox Craft
+    f046a02e-0139-4584-a9f7-4d39a302d874: 'Blog Images' # Blog Images
+plugins:
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+system:
+  edition: solo
+  live: true
+  name: 'Sandbox Craft'
+  schemaVersion: 3.7.8
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

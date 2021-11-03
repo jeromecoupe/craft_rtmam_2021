@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL
+enabled: true
+handle: default
+hasUrls: true
+language: fr
+name: 'Sandbox Craft'
+primary: true
+siteGroup: 720555ef-0fdd-4f04-910e-c4dc7dad41e4 # Sandbox Craft
+sortOrder: 1

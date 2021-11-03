@@ -1,0 +1,33 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 2be95b78-fbc5-4763-bfd2-4619b0b66d4d # Blog
+handle: blogImage
+instructions: 'Upload image in JPG format 1500 x 1125 (landscape). The system will resize images automatically.'
+name: Image
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowUploads: false
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:f046a02e-0139-4584-a9f7-4d39a302d874' # Blog Images
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: false
+  previewMode: full
+  restrictFiles: '1'
+  selectionLabel: 'Add image'
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:f046a02e-0139-4584-a9f7-4d39a302d874' # Blog Images
+  singleUploadLocationSubpath: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: true
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets
