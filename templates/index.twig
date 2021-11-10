@@ -1,60 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {#
-      Chopper les 3 dernier blogposts et les mettre dans une variable "lastBlogposts"
+{# template extended #}
+{% extends "_layouts/base.twig" %}
 
-      - ce sont des entries > craft.entries()
-      - appartiennent à la section "blog" (nom progra de la section)
-      - classe par date de publication descendantes (récents d'abord)
-      - limite à 3 résultats
-      - prends tt les entries ".all()"
-      -
-    #}
-    {% set lastBlogposts = craft.entries()
-      .section("blog")
-      .orderBy("postDate DESC")
-      .limit(3)
-      .all() %}
+{% set activeNav = "home" %}
 
-    {# loop sur l'Array lastBlogposts
-      - affiche un <ul> si c'est la première fois qu'on passe dans le loop
-      - affiche un </ul> si c'est la dernière fois qu'on passe dans le loop
-    #}
-    {% for post in lastBlogposts %}
-      {% if loop.first %}<ul>{% endif %}
+{% block content %}
 
-        <li>
-          <article>
-            <a href="{{ post.url }}">
-              {# post.blogImage c'est un champs relationnel. Craft renvoie toujours un Array, même si il n'y a qu'un seul élément dans ce dernier.
+  {#
+    - une route de single pointe vers ce template
+    - Craft va automatiquement mettre à notre disposition une variable "entry" que l'on peut utiliser
+  #}
+  <h1>{{ entry.commonTitle }}</h1>
+  <p>{{ entry.commonIntro }}</p>
 
-              Pour chopper le premier élément d'un array, on utilise la méthode ".one()" #}
-              {% set image = post.blogImage.one() %}
-              {% if image %}
-                {# getUrl() permet de passer un objet pour transformer les images: mode, width et height https://craftcms.com/docs/3.x/image-transforms.html #}
-                <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}" alt="{{ image.title }}">
-              {% endif %}
+  {# 3 derniers blogposts#}
+  {% set lastBlogposts = craft.entries()
+    .section("blog")
+    .orderBy("postDate DESC")
+    .limit(3)
+    .all() %}
 
-              <h2>{{ post.title }}</h2>
-              <p>
-                {# filtre date avec les formats dates PHP: https://www.php.net/manual/fr/datetime.format.php #}
-                <time datetime="{{ post.postDate | date("d-m-Y") }}">
-                  {{ post.postDate | date("j F Y") }}
-                </time>
-              </p>
-            </a>
-          </article>
-        </li>
+  {% for post in lastBlogposts %}
+    {% if loop.first %}<ul>{% endif %}
 
-      {% if loop.last %}</ul>{% endif %}
-    {% endfor %}
+      <li>
 
-</body>
-</html>
+        <article>
+          <a href="{{ post.url }}">
+
+            {% set image = post.blogImage.one() %}
+            {% if image %}
+              <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}" alt="{{ image.title }}">
+            {% endif %}
+
+            <h2>{{ post.title }}</h2>
+            <p>
+              <time datetime="{{ post.postDate | date("d-m-Y") }}">
+                {{ post.postDate | date("j F Y") }}
+              </time>
+            </p>
+          </a>
+        </article>
+
+      </li>
+
+    {% if loop.last %}</ul>{% endif %}
+  {% endfor %}
+
+{% endblock %}

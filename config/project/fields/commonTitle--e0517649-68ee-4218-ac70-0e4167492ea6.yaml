@@ -1,0 +1,19 @@
+columnSuffix: lcsbluqn
+contentColumnType: string(512)
+fieldGroup: cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039 # Common
+handle: commonTitle
+instructions: ''
+name: Title
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 128
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,19 @@
+{# template extended #}
+{% extends "_layouts/base.twig" %}
+
+{% set activeNav = "casa" %}
+
+{% block content %}
+
+  {#
+    - nous sommes dans un template appelé par une route (Nous avons défini cela dans la section blog)
+    - Craft va mettre à notre disposition une variable "entry" qui contient l'objet / les champs de l'entry qui correspond à cette route.
+  #}
+  {% set image = entry.blogImage.one() %}
+  {% if image %}
+    <img src="{{ image.url }}" alt="">
+  {% endif %}
+  <h1>{{ entry.title }}</h1>
+  <p>{{ entry.commonIntro }}</p>
+
+{% endblock %}
