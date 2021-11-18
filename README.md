@@ -19,6 +19,12 @@ Site construit avec Craft CMS 2021-2022
 - **aboutImage**: assets(1) connected to `volumesPagesImages`
 - **aboutSkills**: matrix (@TODO)
 
+### Mainnav
+
+- **mainnavLabel**: textfield (30)
+- **mainnavEntry**: entries (1, "Singles")
+
+
 ## SECTIONS
 
 ### Home page: `pageHome` single
@@ -45,3 +51,9 @@ Site construit avec Craft CMS 2021-2022
 - **blogImage**
 - **commonIntro**
 - **commonBody**
+
+### Mainnav: `mainnav` structure
+
+- **title**: hidden = mainnavLabel
+- **mainnavLabel**
+- **mainnavEntry**

@@ -9,41 +9,49 @@
     - une route de single pointe vers ce template
     - Craft va automatiquement mettre à notre disposition une variable "entry" que l'on peut utiliser
   #}
-  <h1>{{ entry.commonTitle }}</h1>
-  <p>{{ entry.commonIntro }}</p>
+  <div class="c-section">
+    <div class="c-container">
 
-  {# 3 derniers blogposts#}
-  {% set lastBlogposts = craft.entries()
-    .section("blog")
-    .orderBy("postDate DESC")
-    .limit(3)
-    .all() %}
+      <h1>{{ entry.commonTitle }}</h1>
+      <p>{{ entry.commonIntro }}</p>
 
-  {% for post in lastBlogposts %}
-    {% if loop.first %}<ul>{% endif %}
+    </div>
+  </div>
 
-      <li>
+  {# 3 derniers blogposts #}
+  <div class="c-section">
+    <div class="c-container">
 
-        <article>
-          <a href="{{ post.url }}">
+      {% set lastBlogposts = craft.entries()
+        .section("blog")
+        .orderBy("postDate DESC")
+        .limit(3)
+        .all() %}
 
-            {% set image = post.blogImage.one() %}
-            {% if image %}
-              <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}" alt="{{ image.title }}">
-            {% endif %}
+      {% for post in lastBlogposts %}
+        {% if loop.first %}<ul class="l-grid  l-grid--3cols@medium">{% endif %}
+          <li>
+            <article>
+              <a href="{{ post.url }}">
+                {% set image = post.blogImage.one() %}
+                {% if image %}
+                  <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}"
+                       class="o-fluidimg"
+                       alt="{{ image.title }}">
+                {% endif %}
+                <h2>{{ post.title }}</h2>
+                <p>
+                  <time datetime="{{ post.postDate | date("d-m-Y") }}">
+                    {{ post.postDate | date("j F Y") }}
+                  </time>
+                </p>
+              </a>
+            </article>
+          </li>
+        {% if loop.last %}</ul>{% endif %}
+      {% endfor %}
 
-            <h2>{{ post.title }}</h2>
-            <p>
-              <time datetime="{{ post.postDate | date("d-m-Y") }}">
-                {{ post.postDate | date("j F Y") }}
-              </time>
-            </p>
-          </a>
-        </article>
-
-      </li>
-
-    {% if loop.last %}</ul>{% endif %}
-  {% endfor %}
+    </div>
+  </div>
 
 {% endblock %}

@@ -1,0 +1,22 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 2802cfda-c532-4a54-9221-a2c0fadb49e4 # Main navigation
+handle: mainnavEntry
+instructions: ''
+name: Entry
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: 'Link to page'
+  showSiteMenu: true
+  source: null
+  sources:
+    - singles
+  targetSiteId: null
+  validateRelatedElements: true
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

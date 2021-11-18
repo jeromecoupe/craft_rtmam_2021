@@ -39,7 +39,7 @@ return [
       '@environment' => App::env('ENVIRONMENT'),
       '@baseUrl' => App::env('BASE_URL'),
       '@basePath' => App::env('BASE_PATH'),
-      '@assetsBasePath' => App::env('BASE_PATH').'/uploads/',
-      '@assetsBaseUrl' => App::env('BASE_URL').'/uploads/',
+      '@assetsBasePath' => App::env('BASE_PATH').'/uploads',
+      '@assetsBaseUrl' => App::env('BASE_URL').'/uploads',
   ],
 ];

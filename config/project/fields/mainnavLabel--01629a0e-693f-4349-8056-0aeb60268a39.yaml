@@ -1,0 +1,19 @@
+columnSuffix: nioymxqm
+contentColumnType: string(120)
+fieldGroup: 2802cfda-c532-4a54-9221-a2c0fadb49e4 # Main navigation
+handle: mainnavLabel
+instructions: ''
+name: Label
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 30
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

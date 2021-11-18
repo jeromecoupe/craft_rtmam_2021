@@ -3,11 +3,23 @@
 
 <header>
   <nav>
-    <ul>
-      <li><a {% if activeNav == "home" %}class="is-active"{% endif %} href="/">Home</a></li>
-      <li><a {% if activeNav == "love" %}class="is-active"{% endif %} href="#">Love</a></li>
-      <li><a {% if activeNav == "work" %}class="is-active"{% endif %}href="#">Work</a></li>
-      <li><a {% if activeNav == "casa" %}class="is-active"{% endif %}href="#">Casa</a></li>
-    </ul>
+
+    {% set navitems = craft.entries()
+      .section("mainnav")
+      .all() %}
+
+    {% for item in navitems %}
+      {% if loop.first %}<ul>{% endif %}
+
+        <li>
+          {% set navEntry = item.mainnavEntry.one() %}
+          {% set navUrl = navEntry.url %}
+
+          <a href="{{ navUrl }}">{{ item.mainnavLabel }}</a>
+        </li>
+
+      {% if loop.last %}</ul>{% endif %}
+    {% endfor %}
+
   </nav>
 </header>

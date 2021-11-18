@@ -8,5 +8,5 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: blog/_entry
-    uriFormat: 'ilovemultimedia/{slug}'
+    uriFormat: 'blog/{slug}'
 type: channel

@@ -1,0 +1,15 @@
+defaultPlacement: end
+enableVersioning: true
+handle: mainnav
+name: 'Main navigation'
+propagationMethod: all
+siteSettings:
+  e058a18f-349e-4971-b6cc-200ff4c0545a: # Sandbox Craft
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 7249c63f-8ab3-43e7-9fea-e519f0df876c
+type: structure
