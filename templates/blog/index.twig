@@ -17,25 +17,33 @@
 
       {#
         afficher les blogposts
-        - les prendre tous
-        - pagination
-      #}
 
+        - pour utiliser la pagination, il faut laisser notre query sans l'exécuter (cad sans mettre `.all()`, `.one()`, `ids()`, etc au bout )
+      #}
       {% set allBlogposts = craft.entries()
         .section("blog")
         .orderBy("postDate ASC")
-        .all() %}
+        .limit(6) %}
 
-      {% for item in allBlogposts %}
-        {% if loop.first %}<ul>{% endif %}
+      {# on exécute la query une première fois avec .total() pour avoir le nombre total de blogposts #}
+      <p>Total blogposts: {{ allBlogposts.total() }}</p>
+
+      {#
+        On passe la query au tag `paginate` qui va limiter le nombre d'entries par page en fonction du paramètre `limit(x)` de la query
+
+        Paginate prend en paramètre une query et l'exécute pour retourner deux objets (auxquels on peut donner les noms que l'on veut)
+          - premier objet: contient les infos de pagination (combien de pages, quelle est la page suivante, la page précédente, etc.)
+          - second objet: contient les element Craft à mettre sur chaque page
+      #}
+      {% paginate allBlogposts as pagination, pageEntries %}
+
+      {% for item in pageEntries %}
+        {% if loop.first %}<ul class="l-grid  l-grid--3cols@medium">{% endif %}
 
           <li>
 
             {% include "_components/blogcard.twig" with {
-              title: item.title,
-              url: item.url,
-              asset: item.blogImage.one(),
-              date: item.postDate
+              blogEntry: item
             } only %}
 
           </li>
@@ -44,6 +52,12 @@
       {% else %}
         <p>No blogpost found</p>
       {% endfor %}
+
+      {#  pagination: on utilise notre objet pagination que le tag paginate a créé plus haut (premier objet retourné) #}
+      <ul>
+        {% if pagination.prevUrl %}<li><a href="{{ pagination.prevUrl }}">Previous</a></li>{% endif %}
+        {% if pagination.nextUrl %}<li><a href="{{ pagination.nextUrl }}">Next</a></li>{% endif %}
+      </ul>
 
     </div>
   </div>

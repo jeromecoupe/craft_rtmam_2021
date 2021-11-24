@@ -33,10 +33,7 @@
           <li>
 
             {% include "_components/blogcard.twig" with {
-              title: post.title,
-              url: post.url,
-              asset: post.blogImage.one(),
-              date: post.postDate
+              blogEntry: post
             } only %}
 
           </li>
