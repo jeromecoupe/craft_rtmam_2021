@@ -2,7 +2,50 @@
 
 {% block content %}
 
-  <h1>Blog</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam soluta magnam, laboriosam obcaecati sequi illum vitae pariatur nesciunt delectus numquam cum iure, earum, dignissimos minus ab! Saepe odio fugit libero.</p>
+  <div class="c-section">
+    <div class="c-container">
+
+      {# entry single #}
+      <h1>{{ entry.commonTitle }}</h1>
+      <p>{{ entry.commonIntro }}</p>
+
+    </div>
+  </div>
+
+  <div class="c-section">
+    <div class="c-container">
+
+      {#
+        afficher les blogposts
+        - les prendre tous
+        - pagination
+      #}
+
+      {% set allBlogposts = craft.entries()
+        .section("blog")
+        .orderBy("postDate ASC")
+        .all() %}
+
+      {% for item in allBlogposts %}
+        {% if loop.first %}<ul>{% endif %}
+
+          <li>
+
+            {% include "_components/blogcard.twig" with {
+              title: item.title,
+              url: item.url,
+              asset: item.blogImage.one(),
+              date: item.postDate
+            } only %}
+
+          </li>
+
+        {% if loop.last %}</ul>{% endif %}
+      {% else %}
+        <p>No blogpost found</p>
+      {% endfor %}
+
+    </div>
+  </div>
 
 {% endblock %}

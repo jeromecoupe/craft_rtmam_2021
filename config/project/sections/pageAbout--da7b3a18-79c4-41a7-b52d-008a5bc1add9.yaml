@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: pageAbout
+name: 'About page'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  e058a18f-349e-4971-b6cc-200ff4c0545a: # Sandbox Craft
+    enabledByDefault: true
+    hasUrls: true
+    template: about/index
+    uriFormat: about
+type: single

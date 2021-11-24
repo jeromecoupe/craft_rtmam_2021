@@ -1,0 +1,11 @@
+{% extends "_layouts/base.twig" %}
+
+{% block content %}
+
+  {# quand l'URL correspond à une route,
+  craft met à notre disposition une variable entry #}
+  <h1>{{ entry.commonTitle }}</h1>
+  <p>{{ entry.commonIntro }}</p>
+  {{ entry.commonBody }}
+
+{% endblock %}

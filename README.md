@@ -41,9 +41,9 @@ Site construit avec Craft CMS 2021-2022
 
 - **commonTitle**
 - **commonIntro**
-- **aboutImage**
+- **aboutImage** @TODO
 - **commonBody**
-- **aboutSkills**
+- **aboutSkills** @TODO
 
 ### Blogposts: `blog` channel
 

@@ -1,4 +1,4 @@
-dateModified: 1637168221
+dateModified: 1637762284
 email:
   fromEmail: $EMAIL_ADDRESS
   fromName: 'Sandbox Craft'
@@ -15,11 +15,13 @@ email:
   transportType: craft\mail\transportadapters\Smtp
 meta:
   __names__:
+    1cb625bc-7a1b-40b9-bd24-74dc6358d009: 'Blog page' # Blog page
     2be95b78-fbc5-4763-bfd2-4619b0b66d4d: Blog # Blog
     3fd4b877-e19d-44e5-9470-da677615c6e7: Homepage # Homepage
     4bc46854-7c53-492d-ae76-3d7acc85c959: 'Nav item' # Nav item
     6fc7ec82-fd53-4cc9-8f78-75012725b329: Intro # Intro
     15a8a987-5944-4dfe-8868-186a87ae65f7: blogpost # blogpost
+    58f49926-aa28-4892-90ac-c44ba66b1f15: 'About page' # About page
     99db8dd8-e4b8-4f2d-87fe-5dd885db2b39: Entry # Entry
     307d28aa-c472-4a55-b91e-daf61e672bdb: 'Main navigation' # Main navigation
     01629a0e-693f-4349-8056-0aeb60268a39: Label # Label
@@ -31,8 +33,10 @@ meta:
     ca7eb5a8-9b5f-42b9-a2c2-3b685e13d369: Blog # Blog
     cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039: Common # Common
     d7cbf7a0-c2e2-48ea-9eae-91f20c8373dd: Body # Body
+    da7b3a18-79c4-41a7-b52d-008a5bc1add9: 'About page' # About page
     e0517649-68ee-4218-ac70-0e4167492ea6: Title # Title
     e058a18f-349e-4971-b6cc-200ff4c0545a: 'Sandbox Craft' # Sandbox Craft
+    e92c2a10-c3fc-418e-bc38-78110a5ac6fc: 'Blog page' # Blog page
     f046a02e-0139-4584-a9f7-4d39a302d874: 'Blog Images' # Blog Images
 plugins:
   redactor:

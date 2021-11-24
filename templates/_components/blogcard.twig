@@ -1,0 +1,33 @@
+{# ----------------------------
+variables
+----------------------------- #}
+
+{% set title = title ?? null %}
+{% set asset = asset ?? null %}
+{% set url = url ?? null %}
+{% set date = date ?? null %}
+{% set toxic = toxic ?? null %}
+
+{% set toxicClass = (toxic is not null) ? "c-blogcard--toxic" : "" %}
+
+{# ----------------------------
+template
+----------------------------- #}
+
+<article class="c-blogcard {{ toxicClass }}">
+  <a href="{{ url }}">
+    {% set image = asset %}
+    {% if image %}
+      <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}"
+           class="o-fluidimg"
+           alt="{{ image.title }}">
+    {% endif %}
+    <h2>{{ title }}</h2>
+    <p>
+      {# formats de date PHP https://www.php.net/manual/en/datetime.format #}
+      <time datetime="{{ date | date("d-m-Y") }}">
+        {{ date | date("j F Y") }}
+      </time>
+    </p>
+  </a>
+</article>

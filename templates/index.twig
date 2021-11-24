@@ -31,22 +31,14 @@
       {% for post in lastBlogposts %}
         {% if loop.first %}<ul class="l-grid  l-grid--3cols@medium">{% endif %}
           <li>
-            <article>
-              <a href="{{ post.url }}">
-                {% set image = post.blogImage.one() %}
-                {% if image %}
-                  <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}"
-                       class="o-fluidimg"
-                       alt="{{ image.title }}">
-                {% endif %}
-                <h2>{{ post.title }}</h2>
-                <p>
-                  <time datetime="{{ post.postDate | date("d-m-Y") }}">
-                    {{ post.postDate | date("j F Y") }}
-                  </time>
-                </p>
-              </a>
-            </article>
+
+            {% include "_components/blogcard.twig" with {
+              title: post.title,
+              url: post.url,
+              asset: post.blogImage.one(),
+              date: post.postDate
+            } only %}
+
           </li>
         {% if loop.last %}</ul>{% endif %}
       {% endfor %}

@@ -4,12 +4,22 @@
 <header>
   <nav>
 
+    {# array d'entries qui viennent de la structure #}
     {% set navitems = craft.entries()
       .section("mainnav")
       .all() %}
 
     {% for item in navitems %}
       {% if loop.first %}<ul>{% endif %}
+
+        {#
+          item == une entry de la structure mainnav
+          - label = un champs texte simple: item.mainnavLabel
+          - url = l'url de l'entry (single) qui est liée à item via le champs item.mainnavEntry
+                  ce champs renvoie lui aussi un tableau d'objets entry
+                  même si ce tableau contient tjs un seul élément
+        #}
+
 
         <li>
           {% set navEntry = item.mainnavEntry.one() %}
