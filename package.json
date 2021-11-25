@@ -1,0 +1,23 @@
+{
+  "name": "sandbox_craft",
+  "version": "1.0.0",
+  "description": "Site construit avec Craft CMS 2021-2022",
+  "main": "index.js",
+  "scripts": {
+    "server": "browser-sync start --no-open --proxy \"sandbox.craft.test\" --files \"templates/\" \"web/assets/\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromecoupe/craft_rtmam_2021.git"
+  },
+  "keywords": [],
+  "author": "Jérôme Coupé",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeromecoupe/craft_rtmam_2021/issues"
+  },
+  "homepage": "https://github.com/jeromecoupe/craft_rtmam_2021#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.7"
+  }
+}
