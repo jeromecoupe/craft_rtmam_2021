@@ -1,0 +1,15 @@
+columnSuffix: xkbpucnr
+contentColumnType: string(255)
+fieldGroup: ca1d3a60-da6a-4956-80c7-3150c907e359 # Social media
+handle: facebookUrl
+instructions: 'Enter the full URL of your facebook account'
+name: 'Facebook URL'
+searchable: false
+settings:
+  maxLength: '255'
+  placeholder: null
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

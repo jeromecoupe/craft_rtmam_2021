@@ -13,6 +13,7 @@ Site construit avec Craft CMS 2021-2022
 ### Blog
 
 - **blogImage**: assets(1) connected to `volumesBlogImages`
+- **blogStyles**: categories(n) connected to `styles`
 
 ### About page
 
@@ -23,6 +24,12 @@ Site construit avec Craft CMS 2021-2022
 
 - **mainnavLabel**: textfield (30)
 - **mainnavEntry**: entries (1, "Singles")
+
+### Social media
+
+- **facebookUrl**: textfield (256)
+- **twitterUrl**: textfield (256)
+- **instragramUrl**: textfield (256)
 
 
 ## SECTIONS
@@ -54,6 +61,20 @@ Site construit avec Craft CMS 2021-2022
 
 ### Mainnav: `mainnav` structure
 
-- **title**: hidden = mainnavLabel
+- **title**: hidden and set to `mainnavLabel`
 - **mainnavLabel**
 - **mainnavEntry**
+
+## GLOBALS
+
+### Social media `socialmedia`
+
+- **facebookUrl**
+- **twitterUrl**
+- **instragramUrl**
+
+## CATEGORIES
+
+### styles `styles`
+
+- **title**: auto

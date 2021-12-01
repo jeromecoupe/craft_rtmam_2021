@@ -35,6 +35,8 @@ return [
   // Whether crawlers should be allowed to index pages and following links
   'disallowRobots' => !$isProd,
 
+  'limitAutoSlugsToAscii' => true,
+
   'aliases' => [
       '@environment' => App::env('ENVIRONMENT'),
       '@baseUrl' => App::env('BASE_URL'),

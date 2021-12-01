@@ -1,0 +1,41 @@
+defaultPlacement: end
+fieldLayouts:
+  372575df-fdbd-4413-80b0-2f4e55cf8df5:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: styles
+name: Styles
+siteSettings:
+  e058a18f-349e-4971-b6cc-200ff4c0545a: # Sandbox Craft
+    hasUrls: true
+    template: blog/index
+    uriFormat: 'blog/styles/{slug}'
+structure:
+  maxLevels: 1
+  uid: 497c3a47-9a6e-4e0a-91bb-9c94a49731ae

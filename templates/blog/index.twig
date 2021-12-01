@@ -5,7 +5,15 @@
   <div class="c-section">
     <div class="c-container">
 
-      {# entry single #}
+      {#
+      entry single
+      ici on va la chercher explicitement et pas via une route parceque nous avons deux routes différentes qui appellent le même template et qu'on doit afficher cette entry single peu importe la route utilisée pour charger le template
+        - une route de la single (/blog/)
+        - une route des categories (/blog/styles/{slug})
+      #}
+      {% set entry = craft.entries()
+        .section("pageBlog")
+        .one() %}
       <h1>{{ entry.commonTitle }}</h1>
       <p>{{ entry.commonIntro }}</p>
 
@@ -17,27 +25,53 @@
 
       {#
         afficher les blogposts
-
-        - pour utiliser la pagination, il faut laisser notre query sans l'exécuter (cad sans mettre `.all()`, `.one()`, `ids()`, etc au bout )
+        - pour utiliser la pagination, il faut laisser notre query sans l'exécuter (cad sans mettre `.all()`, `.one()`, `ids()`, `count()` etc au bout )
       #}
+
+      {% set itemsPerPage = 6 %}
       {% set allBlogposts = craft.entries()
         .section("blog")
         .orderBy("postDate ASC")
-        .limit(6) %}
+        .limit(itemsPerPage) %}
 
-      {# on exécute la query une première fois avec .total() pour avoir le nombre total de blogposts #}
-      <p>Total blogposts: {{ allBlogposts.total() }}</p>
+      {# si on est dans une route de category: craft créée une variable category automatiquement
+      - si cette category est definie
+      - on s'en sert pour modifier la query de base des blogposts pour ne chopper que les blogposts de ce channel qui sont liés à la categorie qui correspond à la route #}
+      {% if category is defined %}
+        {# {% do %} permet de modifier notre query (ici "allBlogposts") sans rien afficher en lui ajoutant un paramètre relatedTo auquel on peut passer l'objet category créé par Craft si on est dans une route qui correspond à une categorie #}
+        {% do allBlogposts.relatedTo(category) %}
+      {% endif %}
+
+      {# créer une variable allStyles et lui assigner toutes les categories apparennant au groupe "styles" #}
+      {% set allStyles = craft.categories()
+        .group("styles")
+        .orderBy("title ASC")
+        .all() %}
+
+      {# affichage des categories #}
+      {% for cat in allStyles %}
+        {% if loop.first %}<ul>{% endif %}
+
+          <li>
+            <a href="{{ cat.url }}">{{ cat.title }}</a>
+          </li>
+
+        {% if loop.last %}</ul>{% endif %}
+      {% endfor %}
+
+      {# on exécute la query une première fois avec .count() pour avoir le nombre total de blogposts #}
+      <p>Total blogposts: {{ allBlogposts.count() }}</p>
 
       {#
         On passe la query au tag `paginate` qui va limiter le nombre d'entries par page en fonction du paramètre `limit(x)` de la query
 
-        Paginate prend en paramètre une query et l'exécute pour retourner deux objets (auxquels on peut donner les noms que l'on veut)
-          - premier objet: contient les infos de pagination (combien de pages, quelle est la page suivante, la page précédente, etc.)
-          - second objet: contient les element Craft à mettre sur chaque page
+        Paginate prend en paramètre une query et l'exécute pour retourner deux variables (auxquelles on peut donner les noms que l'on veut)
+          - premiere variable: contient les infos de pagination (combien de pages, quelle est la page suivante, la page précédente, etc.)
+          - seconde variable: contient les elements Craft à mettre sur chaque page
       #}
-      {% paginate allBlogposts as pagination, pageEntries %}
+      {% paginate allBlogposts as pagination, paginatedPosts %}
 
-      {% for item in pageEntries %}
+      {% for item in paginatedPosts %}
         {% if loop.first %}<ul class="l-grid  l-grid--3cols@medium">{% endif %}
 
           <li>
@@ -49,14 +83,16 @@
           </li>
 
         {% if loop.last %}</ul>{% endif %}
-      {% else %}
-        <p>No blogpost found</p>
       {% endfor %}
 
       {#  pagination: on utilise notre objet pagination que le tag paginate a créé plus haut (premier objet retourné) #}
       <ul>
-        {% if pagination.prevUrl %}<li><a href="{{ pagination.prevUrl }}">Previous</a></li>{% endif %}
-        {% if pagination.nextUrl %}<li><a href="{{ pagination.nextUrl }}">Next</a></li>{% endif %}
+        {% if pagination.prevUrl %}
+          <li><a href="{{ pagination.prevUrl }}">Previous</a></li>
+        {% endif %}
+        {% if pagination.nextUrl %}
+          <li><a href="{{ pagination.nextUrl }}">Next</a></li>
+        {% endif %}
       </ul>
 
     </div>

@@ -1,0 +1,28 @@
+<footer class="c-sitefooter">
+  <div class="c-container">
+    <div class="c-sitefooter__content">
+      <nav class="c-sitefooter__social">
+        {% if socialmedia.facebookUrl or socialmedia.twitterUrl or socialmedia.instagramUrl %}
+          <ul class="c-socialmedia">
+            {% if socialmedia.facebookUrl %}
+              <li class="c-socialmedia__item">
+                <a class="c-socialmedia__link" href="{{ socialmedia.facebookUrl }}">{% include "svg/icon-facebook.svg" %}</a>
+              </li>
+            {% endif %}
+            {% if socialmedia.twitterUrl %}
+              <li class="c-socialmedia__item">
+                <a class="c-socialmedia__link" href="{{ socialmedia.twitterUrl }}">{% include "svg/icon-twitter.svg" %}</a>
+              </li>
+            {% endif %}
+            {% if socialmedia.instagramUrl %}
+              <li class="c-socialmedia__item">
+                <a class="c-socialmedia__link" href="{{ socialmedia.instagramUrl }}">{% include "svg/icon-instagram.svg" %}</a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </nav>
+      <p class="c-sitefooter__copyright">&copy; La casa production</p>
+    </div>
+  </div>
+</footer>

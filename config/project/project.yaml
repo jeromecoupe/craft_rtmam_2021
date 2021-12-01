@@ -1,4 +1,4 @@
-dateModified: 1637762284
+dateModified: 1638377484
 email:
   fromEmail: $EMAIL_ADDRESS
   fromName: 'Sandbox Craft'
@@ -17,19 +17,26 @@ meta:
   __names__:
     1cb625bc-7a1b-40b9-bd24-74dc6358d009: 'Blog page' # Blog page
     2be95b78-fbc5-4763-bfd2-4619b0b66d4d: Blog # Blog
+    3d401dcb-d778-46a7-93b4-55bbdd32c55b: Styles # Styles
     3fd4b877-e19d-44e5-9470-da677615c6e7: Homepage # Homepage
     4bc46854-7c53-492d-ae76-3d7acc85c959: 'Nav item' # Nav item
     6fc7ec82-fd53-4cc9-8f78-75012725b329: Intro # Intro
+    7f31ed06-600a-43c1-9b95-f9ee295f1905: 'Social Media' # Social Media
     15a8a987-5944-4dfe-8868-186a87ae65f7: blogpost # blogpost
     58f49926-aa28-4892-90ac-c44ba66b1f15: 'About page' # About page
+    64e60612-12fa-462b-a5ad-8a841ede300d: 'Facebook URL' # Facebook URL
     99db8dd8-e4b8-4f2d-87fe-5dd885db2b39: Entry # Entry
+    224db3c1-d4a7-49cd-988f-9d41b09fa283: 'Instagram URL' # Instagram URL
     307d28aa-c472-4a55-b91e-daf61e672bdb: 'Main navigation' # Main navigation
     01629a0e-693f-4349-8056-0aeb60268a39: Label # Label
+    2208fd9f-d8a0-4588-b03f-3e6e805ab407: Styles # Styles
     2802cfda-c532-4a54-9221-a2c0fadb49e4: 'Main navigation' # Main navigation
     720555ef-0fdd-4f04-910e-c4dc7dad41e4: 'Sandbox Craft' # Sandbox Craft
+    ade72aeb-22f0-4031-b309-bb397f123ca8: 'Twitter URL' # Twitter URL
     ae57f0ab-2df8-42e9-980f-6ac48bb61766: Homepage # Homepage
     c4d3ae4e-ab50-4211-8a03-13c38fe41021: 'Public Schema' # Public Schema
     c6afdd8f-cfd6-4cc0-affb-da54300c39aa: Image # Image
+    ca1d3a60-da6a-4956-80c7-3150c907e359: 'Social media' # Social media
     ca7eb5a8-9b5f-42b9-a2c2-3b685e13d369: Blog # Blog
     cd2c6ef7-dd1a-4f2d-a6e6-a3db9627f039: Common # Common
     d7cbf7a0-c2e2-48ea-9eae-91f20c8373dd: Body # Body

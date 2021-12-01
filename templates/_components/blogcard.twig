@@ -3,28 +3,25 @@ variables
 ----------------------------- #}
 
 {% set blogEntry = blogEntry ?? null %}
-{% set toxic = toxic ?? null %}
-
-{% set toxicClass = (toxic is not null) ? "c-blogcard--toxic" : "" %}
 
 {# ----------------------------
 template
 ----------------------------- #}
 
-<article class="c-blogcard {{ toxicClass }}">
+<article class="c-blogcard">
   <a href="{{ blogEntry.url }}">
-    {% set image = blogEntry.blogImage.one() %}
-    {% if image %}
-      <img src="{{ image.getUrl({ mode: "crop", width: 800, height: 600 }) }}"
+    {% set img = blogEntry.blogImage.one() %}
+    {% if img %}
+      <img src="{{ img.getUrl({ mode: "crop", width: 800, height: 600 }) }}"
            class="o-fluidimg"
-           alt="{{ image.title }}">
+           alt="{{ img.title }}">
     {% endif %}
-    <h2>{{ blogEntry.title }}</h2>
     <p>
       {# formats de date PHP https://www.php.net/manual/en/datetime.format #}
       <time datetime="{{ blogEntry.postDate | date("d-m-Y") }}">
         {{ blogEntry.postDate | date("j F Y") }}
       </time>
     </p>
+    <h2>{{ blogEntry.title }}</h2>
   </a>
 </article>
