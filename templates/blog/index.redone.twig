@@ -1,0 +1,90 @@
+{% extends "_layouts/base.twig" %}
+
+{% block content %}
+<div class="c-section">
+  <div class="c-container">
+
+    {# entry single (independamment de la route) #}
+    {% set entry = craft.entries()
+      .section("pageBlog")
+      .one() %}
+    <h1>{{ entry.commonTitle }}</h1>
+    <p>{{ entry.commonIntro }}</p>
+
+    {#
+      Query pour tous les blogposts
+      - si route de catégorie > Craft créé variable "category" qui contient l'élément category qui correspond a cette route
+      - site var category est définie > Limiter les blogposts
+        aux blogposts liés à la categorie que référence la variable "category" créée par Craft
+      - on va avoir besoin de tous les blogposts indépendamment de la categorie quoi qu'il arrive pour afficher le nombre d'entries dans la liste des categories > on clone la query initiale
+    #}
+    {% set blogposts = craft.entries()
+      .section("blog")
+      .orderBy("postDate ASC")
+      .limit(6) %}
+
+    {% set allBlogposts = clone(blogposts).limit(null) %}
+
+
+    {# categories (independamment de la route) #}
+    {% set allCategories = craft.categories()
+      .group("styles")
+      .orderBy("title ASC")
+      .all() %}
+
+    {% for cat in allCategories %}
+      {% if loop.first %}<ul>{% endif %}
+      {% if loop.first %}
+        <li>
+          <a href="{{ entry.url }}">Tous les geckos</a>
+        </li>
+      {% endif %}
+
+        <li>
+          {% set nbrPostsInCat = allBlogposts.relatedTo(cat).count() %}
+          <a href="{{ cat.url }}">{{ cat.title }}</a>
+          ({{ nbrPostsInCat }})
+        </li>
+
+      {% if loop.last %}</ul>{% endif %}
+    {% endfor %}
+
+    {# si route de categorie / "category" existe on modifie la query de base #}
+    {% if category is defined %}
+      {# on est certains que le template est chargé via une route de categories #}
+      {# la variable category contient un objet / element qui est la categorie correspondat à la route #}
+      {% do blogposts.relatedTo(category) %}
+    {% endif %}
+
+    {# nombre de blogposts trouvé (cat ou pas cat) #}
+    <p>{{ blogposts.count() }}</p>
+
+    {# paginate blogposts: returns
+      - pagination: pagiation object
+      - paginatedPosts: entries on each page #}
+    {% paginate blogposts as pagination, paginatedPosts %}
+
+    {% for post in paginatedPosts %}
+      <p>{{ post.title }}</p>
+    {% endfor %}
+
+    <ul>
+      {% if pagination.prevUrl %}
+        <li>
+          <a href="{{ pagination.prevUrl }}">Précédents</a>
+        </li>
+      {% endif %}
+      {% if pagination.nextUrl %}
+        <li>
+          <a href="{{ pagination.nextUrl }}">Suivants</a>
+        </li>
+      {% endif %}
+    </ul>
+
+
+
+
+
+  </div>
+</div>
+{% endblock %}

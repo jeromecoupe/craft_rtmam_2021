@@ -1,5 +1,44 @@
 {% extends "_layouts/base.twig" %}
 
+{#
+
+De quoi avons nous besoin
+
+1. Des champs de l'entry single (pageBlog)
+   toujours besoin > explicite dans le template
+
+   craft.entries().section().one()
+
+2. Query les blogposts
+   toujours besoin > explicite dans le template
+
+   blogposts = craft.entries().section() > va être
+      éventuellement modifiée avec un .relatedTo pour aller chercher les entries liées à la category qui correspond à la route
+
+   allBlogposts = craft.entries().section()
+      jamais modifiée, utilisée pour aller chercher le nombre d'entries liées à chaque categorie quand on affiche la liste des catégories
+
+    - pas de .all() ici psq on va avoir besoin d'une query pour pouvoir faire
+      - .count() > nombre de blogposts total
+      - .relatedTo(cat) < nombre de blogposts liés à chaque categories dans la liste
+      - pagination > a besoin d'une query pour retourner
+        a. un objet pagination (pour fabriquer l'interface)
+        b. un array d'objets entries (celle sur chaque page)
+
+3. Categorie en cours si URL === route de categorie
+   Si ce template est chargé via une route de categorie, Craft va créer automatiquement une variable "category"
+    3.1 si pas de variable category, on ne change rien
+    3.2 si variable category, on doit modifier notre query de blogposts pour aller chercher uniquement ceux qui sont liés à la catégorie en cours (cela tombe bien cet élément est stocké par Craft automatiquement dans la variable category)
+
+    craft.entries().section().relatedTo(category)
+      on peut modifier notre query de base avec {% do %} pour lui ajouter des paramètres
+
+4. Toutes les categories
+   toujours besoin > explicite dans le template
+   craft.categories().section.all()
+
+#}
+
 {% block content %}
 
   <div class="c-section">
@@ -29,17 +68,20 @@
       #}
 
       {% set itemsPerPage = 6 %}
-      {% set allBlogposts = craft.entries()
+
+      {% set blogposts = craft.entries()
         .section("blog")
         .orderBy("postDate ASC")
         .limit(itemsPerPage) %}
+
+      {% set allBlogposts = clone(blogposts).limit(null) %}
 
       {# si on est dans une route de category: craft créée une variable category automatiquement
       - si cette category est definie
       - on s'en sert pour modifier la query de base des blogposts pour ne chopper que les blogposts de ce channel qui sont liés à la categorie qui correspond à la route #}
       {% if category is defined %}
         {# {% do %} permet de modifier notre query (ici "allBlogposts") sans rien afficher en lui ajoutant un paramètre relatedTo auquel on peut passer l'objet category créé par Craft si on est dans une route qui correspond à une categorie #}
-        {% do allBlogposts.relatedTo(category) %}
+        {% do blogposts.relatedTo(category) %}
       {% endif %}
 
       {# créer une variable allStyles et lui assigner toutes les categories apparennant au groupe "styles" #}
@@ -52,15 +94,22 @@
       {% for cat in allStyles %}
         {% if loop.first %}<ul>{% endif %}
 
+          {% if loop.first %}
+            <li>
+              <a href="{{ entry.url }}">All geckos</a>
+            </li>
+          {% endif %}
+
           <li>
-            <a href="{{ cat.url }}">{{ cat.title }}</a>
+            {% set nbrEntriesInCat =  allBlogposts.relatedTo(cat).count() %}
+            <a href="{{ cat.url }}">{{ cat.title }}</a> ({{ nbrEntriesInCat }})
           </li>
 
         {% if loop.last %}</ul>{% endif %}
       {% endfor %}
 
       {# on exécute la query une première fois avec .count() pour avoir le nombre total de blogposts #}
-      <p>Total blogposts: {{ allBlogposts.count() }}</p>
+      <p>Total blogposts: {{ blogposts.count() }}</p>
 
       {#
         On passe la query au tag `paginate` qui va limiter le nombre d'entries par page en fonction du paramètre `limit(x)` de la query
@@ -69,7 +118,7 @@
           - premiere variable: contient les infos de pagination (combien de pages, quelle est la page suivante, la page précédente, etc.)
           - seconde variable: contient les elements Craft à mettre sur chaque page
       #}
-      {% paginate allBlogposts as pagination, paginatedPosts %}
+      {% paginate blogposts as pagination, paginatedPosts %}
 
       {% for item in paginatedPosts %}
         {% if loop.first %}<ul class="l-grid  l-grid--3cols@medium">{% endif %}
