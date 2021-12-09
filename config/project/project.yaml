@@ -1,4 +1,4 @@
-dateModified: 1638377484
+dateModified: 1638983467
 email:
   fromEmail: $EMAIL_ADDRESS
   fromName: 'Sandbox Craft'
@@ -15,18 +15,24 @@ email:
   transportType: craft\mail\transportadapters\Smtp
 meta:
   __names__:
+    1be6269a-f85f-4896-8d92-2e70b84c5f7b: Skills # Skills
     1cb625bc-7a1b-40b9-bd24-74dc6358d009: 'Blog page' # Blog page
     2be95b78-fbc5-4763-bfd2-4619b0b66d4d: Blog # Blog
+    3a9ff531-d9dd-4ab6-85d3-2d8a7d039277: Text # Text
     3d401dcb-d778-46a7-93b4-55bbdd32c55b: Styles # Styles
     3fd4b877-e19d-44e5-9470-da677615c6e7: Homepage # Homepage
     4bc46854-7c53-492d-ae76-3d7acc85c959: 'Nav item' # Nav item
+    6e942d4c-662b-4f99-8a5a-61f2498c8e71: Title # Title
     6fc7ec82-fd53-4cc9-8f78-75012725b329: Intro # Intro
     7f31ed06-600a-43c1-9b95-f9ee295f1905: 'Social Media' # Social Media
+    8f84cd6f-ec30-446e-914d-6860b7a22663: Image # Image
     15a8a987-5944-4dfe-8868-186a87ae65f7: blogpost # blogpost
     58f49926-aa28-4892-90ac-c44ba66b1f15: 'About page' # About page
     64e60612-12fa-462b-a5ad-8a841ede300d: 'Facebook URL' # Facebook URL
     99db8dd8-e4b8-4f2d-87fe-5dd885db2b39: Entry # Entry
+    157ca52a-5179-4660-b95b-24d797f8ca6d: Skill # Skill
     224db3c1-d4a7-49cd-988f-9d41b09fa283: 'Instagram URL' # Instagram URL
+    235b671c-3771-4f8f-89df-096f57d5aa03: Image # Image
     307d28aa-c472-4a55-b91e-daf61e672bdb: 'Main navigation' # Main navigation
     01629a0e-693f-4349-8056-0aeb60268a39: Label # Label
     2208fd9f-d8a0-4588-b03f-3e6e805ab407: Styles # Styles
@@ -45,6 +51,7 @@ meta:
     e058a18f-349e-4971-b6cc-200ff4c0545a: 'Sandbox Craft' # Sandbox Craft
     e92c2a10-c3fc-418e-bc38-78110a5ac6fc: 'Blog page' # Blog page
     f046a02e-0139-4584-a9f7-4d39a302d874: 'Blog Images' # Blog Images
+    fe349c76-25d4-43c8-976b-a5a4bc06ae8f: About # About
 plugins:
   redactor:
     edition: standard

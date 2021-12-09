@@ -1,0 +1,70 @@
+field: 1be6269a-f85f-4896-8d92-2e70b84c5f7b # Skills
+fieldLayouts:
+  c03e8dbd-4a5a-4aef-a3e5-0a8aca43583d:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 6e942d4c-662b-4f99-8a5a-61f2498c8e71 # Title
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 3a9ff531-d9dd-4ab6-85d3-2d8a7d039277 # Text
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  3a9ff531-d9dd-4ab6-85d3-2d8a7d039277: # Text
+    columnSuffix: null
+    contentColumnType: string(1200)
+    fieldGroup: null
+    handle: mxSkillText
+    instructions: ''
+    name: Text
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 300
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6e942d4c-662b-4f99-8a5a-61f2498c8e71: # Title
+    columnSuffix: null
+    contentColumnType: string(512)
+    fieldGroup: null
+    handle: mxSkillTitle
+    instructions: ''
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 128
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: blockSkill
+name: Skill
+sortOrder: 1

@@ -18,7 +18,10 @@ Site construit avec Craft CMS 2021-2022
 ### About page
 
 - **aboutImage**: assets(1) connected to `volumesPagesImages`
-- **aboutSkills**: matrix (@TODO)
+- **aboutSkills**: matrix
+  - **blockSkill**
+    - **mxSkillTitle**: textfield (128)
+    - **mxSkillText**: textfield (300)
 
 ### Mainnav
 

@@ -8,4 +8,20 @@
   <p>{{ entry.commonIntro }}</p>
   {{ entry.commonBody }}
 
+  {% set skills = entry.aboutSkills.all() %}
+  {% for mxBlock in skills %}
+    {% switch mxBlock.type %}
+      {% case "blockSkill" %}
+        <div>
+          <h2>{{ mxBlock.mxSkillTitle }}</h2>
+          <p>{{ mxBlock.mxSkillText }}</p>
+        </div>
+      {% case "blockImage" %}
+        {% set img = mxBlock.mxImage.one() %}
+        {% if img %}
+          <img src="{{ img.getUrl({ width: 100, height: 100}) }}" alt="{{ img.title }}">
+        {% endif %}
+    {% endswitch %}
+  {% endfor %}
+
 {% endblock %}
